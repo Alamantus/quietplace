@@ -1,0 +1,23 @@
+.scene {
+  background-size: cover;
+  background-position: center;
+
+  .description {
+    max-height: 500px;
+    overflow-y: auto;
+  }
+  
+  .box {
+    background-color: rgba(255, 255, 255, 0.85);
+  }
+}
+
+.duck-pond {
+  @extend .scene;
+  background-image: url(/images/duck-pond.jpg);
+  background-position-y: 80%;
+
+  .box {
+    background-color: rgba(255, 255, 255, 0.85);
+  }
+}

@@ -38,5 +38,5 @@ events:
 - text: Frogs are croaking on the lily pads.
   possibilities:
   - false
-  - They are looking hungrily at the {{insects}} flying around their heads, but they don't them any harm.
+  - They are looking hungrily at the {{insects}} flying around their heads, but they restrain themselves.
   - Their croaking songs are so peaceful that you feel relaxation in your heart.

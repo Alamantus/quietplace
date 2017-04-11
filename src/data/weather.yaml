@@ -1,0 +1,23 @@
+sky:
+- clear
+- bright
+- dreamy
+- cloudy
+- partly cloudy
+- mostly cloudy
+- overcast
+- foggy
+- rainy
+- stormy
+- drizzly
+- misty
+
+temperature:
+- warm
+- brisk
+- balmy
+- cool
+- comfortable
+- chilly
+- hot
+- cosy
