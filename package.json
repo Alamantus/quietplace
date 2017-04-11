@@ -1,0 +1,52 @@
+{
+  "name": "quietplace",
+  "version": "0.0.0",
+  "description": "a digital space that displays a text-based scene that's different every day",
+  "main": "index.js",
+  "dependencies": {
+    "babel-polyfill": "^6.23.0",
+    "bulma": "^0.4.0",
+    "choo": "^5.1.4",
+    "dexie": "^1.5.1",
+    "moment": "^2.18.1",
+    "seed-random": "^2.2.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.24.1",
+    "babel-loader": "^6.4.1",
+    "babel-preset-es2016": "^6.24.1",
+    "css-loader": "^0.28.0",
+    "express": "^4.15.2",
+    "file-loader": "^0.11.1",
+    "node-sass": "^4.5.2",
+    "sass-loader": "^6.0.3",
+    "style-loader": "^0.16.1",
+    "url-loader": "^0.5.8",
+    "webpack": "^2.3.3",
+    "yaml-loader": "^0.4.0"
+  },
+  "scripts": {
+    "serve": "node start-server.js",
+    "pack": "node ./node_modules/webpack/bin/webpack.js -d --progress --display-error-details",
+    "watch": "node ./node_modules/webpack/bin/webpack.js -d --progress --watch",
+    "build": "node ./node_modules/webpack/bin/webpack.js -p --progress"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Alamantus/quietplace.git"
+  },
+  "keywords": [
+    "git",
+    "star",
+    "stargazing",
+    "bookmarks",
+    "github",
+    "bitbucket"
+  ],
+  "author": "Robbie Antenesse <dev@alamantus.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Alamantus/quietplace/issues"
+  },
+  "homepage": "https://github.com/Alamantus/quietplace#readme"
+}
