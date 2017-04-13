@@ -1,16 +1,20 @@
 require('./styles/main.scss');
 
-const html = require('choo/html');
-const choo = require('choo');
-let app = choo();
+import html from 'choo/html';
+import choo from 'choo';
 
-const moment = require('moment');
+const app = choo();
 
-const helpers = require('./helpers');
-const weatherData = require('./data/weather.yaml');
+import moment from 'moment';
+
+import helpers from './helpers';
+import weatherData from './data/weather.yaml';
 
 // Import views
-const duckPond = require('./views/duckPond');
+import duckPond from './views/duckPond';
+
+// Import controllers
+import {DuckPondController} from './controllers/DuckPondController.js';
 
 const dateStamp = moment().format('YYYYMMDD');
 helpers.setRandomSeed(dateStamp);
@@ -23,14 +27,12 @@ app.use((state, emitter) => {
   state.weather = helpers.randomArrayElement(weatherData.sky);
   state.temperature = helpers.randomArrayElement(weatherData.temperature);
 
+  const duckPondController = new DuckPondController(state, emitter);
+
   // Listeners
   emitter.on('DOMContentLoaded', () => {
     emitter.on('feed', (message) => {
-      state.pellets -= (state.pellets > 0) ? 1 : 0;
-      state.userActions.push(message);
-      emitter.emit('render');
-      // TODO: Figure out how to run AFTER the render completes.
-      // helpers.scrollDescription();
+      duckPondController.feed(message);
     });
   });
 });

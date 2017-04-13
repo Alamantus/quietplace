@@ -1,13 +1,13 @@
-const html = require('choo/html');
-const onload = require('on-load');
-const moment = require('moment');
-const seedRandom = require('seed-random');
+import html from 'choo/html';
+import onload from 'on-load';
+import moment from 'moment';
+import seedRandom from 'seed-random';
 
-const helpers = require('../helpers.js');
-const duckPondData = require('../data/duckPond.yaml');
+import helpers from '../helpers.js';
+import duckPondData from '../data/duckPond.yaml';
 helpers.dataContext = duckPondData;
 
-module.exports = (state, emit) => {
+export default (state, emit) => {
   helpers.setRandomSeed(state.dateStamp);
 
   const feed = (numberOfDucks) => {
@@ -16,7 +16,7 @@ module.exports = (state, emit) => {
     if (state.pellets > 0) {
       seedRandom.resetGlobal();
 
-      message = html`<span>${duckPondData.actions.feed.text}<br>${helpers.randomArrayElement(duckPondData.actions.feed.possibilities)}</span>`;
+      message = `${duckPondData.actions.feed.text}<br>${helpers.randomArrayElement(duckPondData.actions.feed.possibilities)}`;
 
       helpers.setRandomSeed();
     } else {
@@ -81,20 +81,36 @@ module.exports = (state, emit) => {
               <div class="column is-three-quarters">
                 <div class="box description">
                   <div class="content">
+                    
+                    ${state.userActions.map(action => {
+                      let momentTime = moment(action.time);
+                      let output = html`
+                      <p>
+                        <small>
+                          ${(momentTime.isBefore(moment().subtract(5, 'minutes')))
+                            ? momentTime.format('h:mm:ss a')
+                            : momentTime.fromNow()}
+                        </small>
+                        <br>
+                      </p>
+                      `;
+                      // Append the action string, which may contain HTML.
+                      output.innerHTML += action.action;
+
+                      return output;
+                    })}
+
                     <p>
+                      <small>
+                        Today
+                      </small>
+                      <br>
                       There ${(numberOfDucks === 1) ? 'is' : 'are'} ${(numberOfDucks === 0) ? 'no' : numberOfDucks.toString()}
                       duck${(numberOfDucks === 1) ? '' : 's'} floating lazily in the pond.
                     </p>
                     <p>
                       ${helpers.fillTemplateString(event.text, false)} ${possibility ? helpers.fillTemplateString(possibility, false) : ''}
                     </p>
-                    ${state.userActions.map(action => {
-                      return html`
-                      <p>
-                        ${action}
-                      </p>
-                      `;
-                    })}
                   </div>
                 </div>
               </div>
