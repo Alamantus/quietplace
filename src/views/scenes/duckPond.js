@@ -104,5 +104,5 @@ export default (state, emit, controller) => {
     </div>
   `;
 
-  return html`${container(title, subtitle, content, {contentClass: contentClass, showBack: true})}`;
+  return html`${container(title, subtitle, content, {contentClass: contentClass, showBack: true, emit: emit})}`;
 }

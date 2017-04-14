@@ -33,6 +33,10 @@ app.use((state, emitter) => {
     emitter.on('duckpond-feed', (method) => {
       method();
     });
+
+    emitter.on('render', () => {
+      helpers.fadeIn();
+    });
   });
 });
 

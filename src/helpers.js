@@ -42,11 +42,49 @@ helpers.getAppropriateArticle = (string) => {
   return vowels.includes(string.substr(0, 1)) ? 'an' : 'a';
 }
 
-helpers.scrollDescription = () => {
-  const descriptionContainer = document.getElementsByClassName('description')[0];
-  descriptionContainer.scrollTop = descriptionContainer.scrollHeight * 2;
-  console.log(descriptionContainer.scrollTop);
-  console.log(descriptionContainer.scrollHeight);
+
+// Fade In/Out
+helpers.fadeSpeed = 0.075;
+
+helpers.fadeIn = () => {
+  const fadeSpeed = helpers.fadeSpeed;
+  const fadeWall = document.getElementById('fadeWall');
+  fadeWall.style.display = 'block';
+  fadeWall.style.opacity = 1;
+
+  var fadeIn = setInterval(() => {
+    const opacity = parseFloat(fadeWall.style.opacity);
+
+    if (opacity > fadeSpeed) {
+      fadeWall.style.opacity = opacity - fadeSpeed;
+    } else {
+      fadeWall.style.opacity = 0;
+      fadeWall.style.display = 'none';
+      clearInterval(fadeIn);
+    }
+  }, 100);
+}
+
+helpers.fadeOut = actionToTake => {
+  const fadeSpeed = helpers.fadeSpeed;
+  const fadeWall = document.getElementById('fadeWall');
+  fadeWall.style.opacity = 0;
+  fadeWall.style.display = 'block';
+
+  console.log('fading out');
+
+  var fadeIn = setInterval(() => {
+    const opacity = parseFloat(fadeWall.style.opacity);
+
+    if (opacity < 1 - fadeSpeed) {
+      fadeWall.style.opacity = opacity + fadeSpeed;
+      console.log(fadeWall.style.opacity)
+    } else {
+      fadeWall.style.opacity = 1;
+      clearInterval(fadeIn);
+      actionToTake();
+    }
+  }, 100);
 }
 
 module.exports = helpers;

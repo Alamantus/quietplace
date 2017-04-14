@@ -1,12 +1,18 @@
 import html from 'choo/html';
 
+import helpers from '../../helpers';
+
 import header from './header';
 
-export default (title, subtitle, content, {contentClass = 'scene', showBack = false} = {}) => {
+export default (title, subtitle, content, {contentClass = 'scene', showBack = false, emit = undefined} = {}) => {
   return html`
-    <section class="hero is-blue is-fullheight">
+    <section class="hero is-blue is-fullheight"
+      onload=${() => {
+        console.log('fading in');
+        helpers.fadeIn();
+      }}>
 
-      ${header(title, subtitle, showBack)}
+      ${header(title, subtitle, showBack, emit)}
 
       <div class="hero-body ${contentClass}">
         <div class="container">
@@ -15,6 +21,8 @@ export default (title, subtitle, content, {contentClass = 'scene', showBack = fa
           </div>
         </div>
       </div>
+
+      <div class="fade-wall" id="fadeWall"></div>
 
     </section>
   `;

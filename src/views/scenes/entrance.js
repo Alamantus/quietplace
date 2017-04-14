@@ -5,7 +5,7 @@ import seedRandom from 'seed-random';
 
 import container from '../templates/container';
 
-import helpers from '../../helpers.js';
+import helpers from '../../helpers';
 import duckPondData from '../../data/duckPond.yaml';
 helpers.dataContext = duckPondData;
 
@@ -51,10 +51,14 @@ export default (state, emit) => {
           Please choose a place to visit
         </h3>
 
-        <div class="tile">
-          <a href="#duckpond" class="button is-primary">
-            The Duck Pond
-          </a>
+        <div class="tile is-ancestor">
+          
+          <div class="tile">
+            <a href="#duckpond" class="button is-primary">
+              The Duck Pond
+            </a>
+          </div>
+
         </div>
 
       </div>
