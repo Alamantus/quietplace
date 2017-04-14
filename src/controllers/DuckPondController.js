@@ -3,9 +3,9 @@ import moment from 'moment';
 import db from '../dexieDatabase';
 
 export class DuckPondController {
-  constructor (state, emitter) {
+  constructor (state, emit) {
     this.state = state;
-    this.emitter = emitter;
+    this.emit = emit;
 
     this.locationName = 'duckPond';
 
@@ -29,27 +29,34 @@ export class DuckPondController {
   }
 
   updateStateActions () {
-    db.actions.where('location')
-    .equals(this.locationName)
-    .reverse()
-    .sortBy('time')
-    .then(results => {
-      const update = userActions => {
-        this.state.userActions = userActions;
-        this.emitter.emit('render');
-      };
+    db.actions.count(count => {
+      if (count > 0) {
+        db.actions.where('location')
+        .equals(this.locationName)
+        .reverse()
+        .sortBy('time')
+        .then(results => {
+          const update = userActions => {
+            this.state.userActions = userActions;
+            this.emit('render');
+          };
 
-      if (moment(results[0].time).isBefore(moment().startOf('day'))) {
-        db.actions.clear()
-        .then(() => {
-          update([]);
+          if (moment(results[0].time).isBefore(moment().startOf('day'))) {
+            console.log('New day, new events!');
+            db.actions.clear()
+            .then(() => {
+              update([]);
+            });
+          } else {
+            update(results);
+          }
+        })
+        .catch(error => {
+          console.error('error getting results:\n' + error);
         });
       } else {
-        update(results);
+        console.log('no events');
       }
-    })
-    .catch(error => {
-      console.error('error getting results:\n' + error);
     });
   }
 

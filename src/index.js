@@ -11,10 +11,10 @@ import helpers from './helpers';
 import weatherData from './data/weather.yaml';
 
 // Import views
-import duckPond from './views/duckPond';
+import main from './views/main';
 
 // Import controllers
-import {DuckPondController} from './controllers/DuckPondController.js';
+// import {DuckPondController} from './controllers/DuckPondController.js';
 
 const dateStamp = moment().format('YYYYMMDD');
 helpers.setRandomSeed(dateStamp);
@@ -27,17 +27,16 @@ app.use((state, emitter) => {
   state.weather = helpers.randomArrayElement(weatherData.sky);
   state.temperature = helpers.randomArrayElement(weatherData.temperature);
 
-  const duckPondController = new DuckPondController(state, emitter);
 
   // Listeners
   emitter.on('DOMContentLoaded', () => {
-    emitter.on('feed', (message) => {
-      duckPondController.feed(message);
+    emitter.on('duckpond-feed', (method) => {
+      method();
     });
   });
 });
 
 // Routes accessed with hashes
-app.route('/:anything', duckPond);
+app.route('/:place', main);
 
 app.mount('#place');

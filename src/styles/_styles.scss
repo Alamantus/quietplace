@@ -1,6 +1,16 @@
+@import 'variables';
+@import '../../node_modules/bulma/bulma';
+
+.is-blue {
+  @extend .is-info;
+  background-color: $blue;
+  color: $white;
+}
+
 .scene {
   background-size: cover;
   background-position: center;
+  background-color: $grey-light;
 
   .description {
     max-height: 500px;
@@ -12,12 +22,12 @@
   }
 }
 
+.entrance {
+  @extend .scene;
+}
+
 .duck-pond {
   @extend .scene;
   background-image: url(/images/duck-pond.jpg);
   background-position-y: 80%;
-
-  .box {
-    background-color: rgba(255, 255, 255, 0.85);
-  }
 }

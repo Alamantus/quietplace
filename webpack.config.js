@@ -1,5 +1,7 @@
 // Set BUILDMODE to 'production' to reduce overhead.
-const BUILDMODE = 'development';
+// Set to 'emptydatabase' to clear the database on each load.
+// Use anything else, but preferrably 'development' for whatever.
+const BUILDMODE = 'emptydatabase';
 
 const webpack = require('webpack');
 const path = require('path');
@@ -16,7 +18,7 @@ const webpackConfig = {
 , module: {
     rules: [
       {
-        test: (/\.scss$/)
+        test: (/\.s(c|a)ss$/)
       , exclude: (/node_modules/)
       , use: [
           'style-loader'
