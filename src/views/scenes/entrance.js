@@ -11,6 +11,7 @@ helpers.dataContext = duckPondData;
 
 export default (state, emit) => {
   helpers.setRandomSeed(state.dateStamp);
+  helpers.state = state;
 
   const feed = (numberOfDucks) => {
     let message = '';
@@ -54,7 +55,7 @@ export default (state, emit) => {
         <div class="tile is-ancestor">
           
           <div class="tile">
-            <a href="#duckpond" class="button is-primary">
+            <a href="./#duckpond" class="button is-primary">
               The Duck Pond
             </a>
           </div>

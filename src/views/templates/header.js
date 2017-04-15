@@ -2,7 +2,7 @@ import html from 'choo/html';
 
 import helpers from '../../helpers';
 
-export default (title, subtitle, showBack, emit = () => {}) => {
+export default (title, subtitle, showBack) => {
   return html`
     <div class="hero-head">
       <div class="container">
@@ -10,12 +10,7 @@ export default (title, subtitle, showBack, emit = () => {}) => {
 
           ${(showBack) ? html`
             <div class="level-item">
-              <a class="button is-link" onclick=${() => {
-                helpers.fadeOut(() => {
-                  emit('pushState', './');
-                  emit('render');
-                });
-              }}>
+              <a href="./" class="button is-link">
                 \u2190 Entrance
               </a>
             </div>

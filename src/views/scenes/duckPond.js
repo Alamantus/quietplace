@@ -13,6 +13,7 @@ helpers.dataContext = duckPondData;
 
 export default (state, emit, controller) => {
   helpers.setRandomSeed(state.dateStamp);
+  helpers.state = state;
 
   const duckPondController = new DuckPondController(state, emit);
 
@@ -35,7 +36,7 @@ export default (state, emit, controller) => {
       }
     }
 
-    emit('duckpond-feed', duckPondController.feed(message));
+    emit('duckpond-feed', () => duckPondController.feed(message));
   }
 
   const numberOfDucks = helpers.randomIntInRange(0, 30);
@@ -104,5 +105,5 @@ export default (state, emit, controller) => {
     </div>
   `;
 
-  return html`${container(title, subtitle, content, {contentClass: contentClass, showBack: true, emit: emit})}`;
+  return html`${container(title, subtitle, content, {contentClass: contentClass, showBack: true})}`;
 }
