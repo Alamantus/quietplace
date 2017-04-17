@@ -28,6 +28,8 @@ actions:
     possibilities:
     - The pellets go unnoticed, but you feel a sense of gratitude in your heart.
     - The pellets are quickly gobbled up, and you feel a deep sense of gratitude in your heart.
+    - The pellets go unnoticed, but you know they're just being saved for later.
+    - Some of the pellets are snatched up by the hungry fish, and you know they are grateful for the treat.
 
 events:
 - text: There are {{insects}} are flitting about the surface of the pond, randomly alighting on the cattail reeds.
@@ -35,8 +37,25 @@ events:
   - false
   - One of them lands on your {{bodyParts}}.
   - They chase each other playfully.
+  - They fly in large circles around the pond, creating a colorful vortex.
+
 - text: Frogs are croaking on the lily pads.
   possibilities:
   - false
-  - They are looking hungrily at the {{insects}} flying around their heads, but they restrain themselves.
   - Their croaking songs are so peaceful that you feel relaxation in your heart.
+  - They are looking hungrily at the {{insects}} flying around their heads, but they restrain themselves.
+  - They occasionally hop into the water to climb onto other lily pads, just to keep busy.
+
+- text: The fish are swimming around happily.
+  possibilities:
+  - false
+  - They seem particularly active today.
+  - One of them jumps out of the water to get a better look at the world.
+  - They swim figure-eights around the pond in a big, fluid group.
+
+- text: A breeze whispers through the willow tree's leaves soothingly.
+  possibilities:
+  - false
+  - Some leaves are rustled free and land on your {{bodyParts}}.
+  - The rustling of the leaves brings a feeling of soothing and peace to your heart.
+  - Some {{insects}} flit around and dance in the swaying branches.
