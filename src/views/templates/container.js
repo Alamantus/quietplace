@@ -6,11 +6,7 @@ import header from './header';
 
 export default (title, subtitle, content, {contentClass = 'scene', showBack = false, emit = undefined} = {}) => {
   return html`
-    <section class="hero is-blue is-fullheight"
-      onload=${() => {
-        console.log('fading in');
-        helpers.fadeIn();
-      }}>
+    <section class="hero is-blue is-fullheight">
 
       ${header(title, subtitle, showBack, emit)}
 
@@ -21,8 +17,6 @@ export default (title, subtitle, content, {contentClass = 'scene', showBack = fa
           </div>
         </div>
       </div>
-
-      <div class="fade-wall" id="fadeWall" style="opacity:1;"></div>
 
     </section>
   `;

@@ -10,11 +10,7 @@ export default (title, subtitle, showBack, emit = () => {}) => {
 
           ${(showBack) ? html`
             <div class="level-item">
-              <a class="button is-link" onclick=${() => {
-                helpers.fadeOut(() => {
-                  emit('pushState', './');
-                });
-              }}>
+              <a href="./" class="button is-link">
                 \u2190 Entrance
               </a>
             </div>

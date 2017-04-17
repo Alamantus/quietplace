@@ -54,11 +54,7 @@ export default (state, emit) => {
         <div class="tile is-ancestor">
           
           <div class="tile">
-            <a class="button is-primary" onclick=${() => {
-              helpers.fadeOut(() => {
-                emit('pushState', './#duckpond');
-              });
-            }}>
+            <a href="./#duckpond" class="button is-primary">
               The Duck Pond
             </a>
           </div>
