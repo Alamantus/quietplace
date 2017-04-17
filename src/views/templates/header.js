@@ -2,7 +2,7 @@ import html from 'choo/html';
 
 import helpers from '../../helpers';
 
-export default (title, subtitle, showBack, emit = () => {}) => {
+export default (title, subtitle, showBack) => {
   return html`
     <div class="site-header">
       <div class="container">

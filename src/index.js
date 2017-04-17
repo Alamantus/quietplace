@@ -27,7 +27,6 @@ app.use((state, emitter) => {
   state.weather = helpers.randomArrayElement(weatherData.sky);
   state.temperature = helpers.randomArrayElement(weatherData.temperature);
 
-
   // Listeners
   emitter.on('DOMContentLoaded', () => {
     emitter.on('duckpond-feed', (method) => {

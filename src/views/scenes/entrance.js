@@ -11,6 +11,7 @@ helpers.dataContext = duckPondData;
 
 export default (state, emit) => {
   helpers.setRandomSeed(state.dateStamp);
+  helpers.state = state;
 
   const feed = (numberOfDucks) => {
     let message = '';
