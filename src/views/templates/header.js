@@ -13,7 +13,6 @@ export default (title, subtitle, showBack, emit = () => {}) => {
               <a class="button is-link" onclick=${() => {
                 helpers.fadeOut(() => {
                   emit('pushState', './');
-                  emit('render');
                 });
               }}>
                 \u2190 Entrance

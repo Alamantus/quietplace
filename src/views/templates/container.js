@@ -22,7 +22,7 @@ export default (title, subtitle, content, {contentClass = 'scene', showBack = fa
         </div>
       </div>
 
-      <div class="fade-wall" id="fadeWall"></div>
+      <div class="fade-wall" id="fadeWall" style="opacity:1;"></div>
 
     </section>
   `;
