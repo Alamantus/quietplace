@@ -5,6 +5,17 @@
   @extend .is-info;
   background-color: $blue;
   color: $white;
+
+  .modal {
+    color: $black;
+  }
+}
+
+.site-header {
+  @extend .hero-head;
+
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .scene {

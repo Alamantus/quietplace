@@ -3,6 +3,7 @@ import html from 'choo/html';
 import helpers from '../../helpers';
 
 import header from './header';
+import footer from './footer';
 
 export default (title, subtitle, content, {contentClass = 'scene', showBack = false, emit = undefined} = {}) => {
   return html`
@@ -17,6 +18,8 @@ export default (title, subtitle, content, {contentClass = 'scene', showBack = fa
           </div>
         </div>
       </div>
+
+      ${footer()}
 
     </section>
   `;

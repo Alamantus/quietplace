@@ -4,7 +4,7 @@ import helpers from '../../helpers';
 
 export default (title, subtitle, showBack, emit = () => {}) => {
   return html`
-    <div class="hero-head">
+    <div class="site-header">
       <div class="container">
         <div class="level">
 
